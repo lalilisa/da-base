@@ -1,0 +1,29 @@
+NODE_ID : 1
+
+spring:
+  application:
+    name: base-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: 'root'
+    password: 'trimai'
+  redis:
+    type: single
+    host: '127.0.0.1'
+    port: 6379
+    password: 'trimai'
+    username: 'trimai'
+logging:
+  level:
+    root: WARN
+    com.movie.base : INFO
+    com.libs : INFO
+
+app:
+  serviceName : base-service
+  kafkaHost   : "127.0.0.1:9092"
+  kafkaTimeout: 15000
+  nodeId: ${NODE_ID}
+  instanceId: ${spring.application.name}_${app.nodeId}_1
+server:
+  port: 8081
